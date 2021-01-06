@@ -38,8 +38,16 @@ const createRouter = function (collection) {
     })
   });
 
+  // Adding Delete route / DELETE
+  router.delete("/:id", (req, res)=>{
+    const id = req.params.id;
+    collection
+    .deleteOne({_id: ObjectID(id)})
+    .then((result)=>{
+      return res.json(result)
+    });
+  });
 
-  
   return router;
 };
 
